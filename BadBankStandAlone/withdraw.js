@@ -1,7 +1,6 @@
 function Withdraw(){
   const { useState, useEffect } = React;
   const [status, setStatus] = useState('');
-  const [button, setButton] = useState(false);
   const [deposit, setDeposit] = useState('')
   const [loggedInUser, setLoggedInUser] = useState('Please Sign in')
   const [currentBalance, setCurrentBalance] = useState(0)
