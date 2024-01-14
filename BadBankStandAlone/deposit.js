@@ -1,11 +1,10 @@
 function Deposit(){
-  const { useState, useEffect } = React;
-  const [status, setStatus] = useState('');
-  const [button, setButton] = useState(false);
-  const [deposit, setDeposit] = useState('')
-  const [loggedInUser, setLoggedInUser] = useState('Please Sign in')
+  const { useState, useEffect }             = React;
+  const [status, setStatus]                 = useState('');
+  const [deposit, setDeposit]               = useState('')
+  const [loggedInUser, setLoggedInUser]     = useState('Please Sign in')
   const [currentBalance, setCurrentBalance] = useState(0)
-  const [balance, setBalance] = useState()
+  const [balance, setBalance]               = useState()
   const ctx = React.useContext(UserContext);
   
 
@@ -13,18 +12,18 @@ function Deposit(){
     const getLoggedInUser = () => {
       ctx[1].users.map((user, i) => {
         if(user.name == ctx[0].loggedIn){
-          let tempUser = [ctx[1].users[i]]
-          setLoggedInUser(tempUser[0].name)
-          setCurrentBalance(tempUser[0].balance)
+          let tempUser = [ctx[1].users[i]];
+          setLoggedInUser(tempUser[0].name);
+          setCurrentBalance(tempUser[0].balance);
         }
       })
     }
     getLoggedInUser();
-  }, [balance])
+  }, [balance]);
 
   
   const updateStatus = (deposit) => {
-    setStatus(`Successful deposit of $${deposit}`)
+    setStatus(`Successful deposit of $${deposit}`);
     setTimeout(() => setStatus(''),3000);
   }
 
@@ -35,19 +34,19 @@ function Deposit(){
       if (Math.sign(deposit) == 1) {
         ctx[1].users.map((user, i) => {
           if(user.name == ctx[0].loggedIn){
-            ctx[1].users[i].balance = ctx[1].users[i].balance + deposit
-            setBalance(ctx[1].users[i].balance)
+            ctx[1].users[i].balance = ctx[1].users[i].balance + deposit;
+            setBalance(ctx[1].users[i].balance);
             const form = document.querySelector('form');
             form.reset();
             updateStatus(deposit);
-            setDeposit('')
+            setDeposit('');
           }
         })
       } else {
-        alert('Please enter a positive number')
+        alert('Please enter a positive number');
       }
     } else {
-      alert('please enter a number')
+      alert('please enter a number');
     }
   }
 
