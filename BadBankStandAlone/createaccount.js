@@ -6,6 +6,7 @@ function CreateAccount(){
   const [password, setPassword] = React.useState('');
   const ctx = React.useContext(UserContext);  
 
+  // validates the form fields are not empty
   function validate(field, label){
       if (!field) {
         setStatus('Error: ' + label);
@@ -15,6 +16,10 @@ function CreateAccount(){
       return true;
   }
 
+  /*calls validate to make sure fields are not empty
+  then alerts user if password is under 8 characters
+  pushs user info into context and changes show so bottom
+  of form displays instead*/
   function handleCreate(){
     console.log(name,email,password);
     if (!validate(name,     'name'))     return;
@@ -26,8 +31,9 @@ function CreateAccount(){
       ctx[1].users.push({name,email,password,balance:100});
       setShow(false);
     }
-  }    
+  }
 
+// clears form
   function clearForm(){
     setName('');
     setEmail('');
@@ -35,6 +41,8 @@ function CreateAccount(){
     setShow(true);
   }
 
+/*button component returns a disabled button if name, email, and password
+fields are empty*/
   const Button = () => {
     if ((name && email && password) == '') {
       return <button disabled='disable' type="submit" className="btn btn-light" onClick={handleCreate}>Create Account</button>
