@@ -1,7 +1,9 @@
 function AllData(){
   const ctx = React.useContext(UserContext);
   function MakeCard(users) {
+    //gets data from context
     let context = ctx[1].users;
+    //maps over users and creates card
     const card = context.map((user, i) => {
       return (
         <Card
