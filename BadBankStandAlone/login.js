@@ -6,7 +6,7 @@ function Login(){
   const ctx = React.useContext(UserContext);
   const users = ctx[1].users;
 
-
+//checks that name and password matches
 const validateUser = (user) => {
   if (user.name == name && user.password == password) {
     return true
@@ -14,6 +14,7 @@ const validateUser = (user) => {
   return false
 }
 
+// validates the the form fields are not empty
 const validateForm = (type, label) => {
   if (!type) {
     setStatus(`Please enter a ${label}`);
@@ -23,6 +24,9 @@ const validateForm = (type, label) => {
   return true
 }
 
+/* validates form fields are not empty
+then filters for user that matches name and password
+then sets logged in user in context*/
 const logInUser = () => {
   event.preventDefault();
   if(!validateForm(name, 'name')) return
