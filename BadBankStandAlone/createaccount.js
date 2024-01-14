@@ -26,7 +26,7 @@ function CreateAccount(){
     if (!validate(email,    'email'))    return;
     if (!validate(password, 'password')) return;
     if (password.length < 8 ) {
-      alert('Password must be more then 8 characters')
+      alert('Password must be more then 8 characters');
     } else {
       ctx[1].users.push({name,email,password,balance:100});
       setShow(false);
