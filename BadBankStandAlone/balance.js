@@ -5,6 +5,7 @@ function Balance(){
   const [show, setShow]                     = useState()
   const ctx = React.useContext(UserContext);
 
+  /* useEffect onload sets user, balance and set show*/
   useEffect(() => {
     const getLoggedInUser = () => {
       ctx[1].users.map((user, i) => {
@@ -19,6 +20,7 @@ function Balance(){
     getLoggedInUser();
   }, []);
 
+  // checks loggedin user and sets show
   const loggedIn = () => {
     if (ctx[0].loggedIn == 'none') {
       setShow(false)
