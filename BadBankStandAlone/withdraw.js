@@ -7,7 +7,8 @@ function Withdraw(){
   const [balance, setBalance] = useState()
   const ctx = React.useContext(UserContext);
   
-
+/* on load useeffect sets loggedInUser and currentBalance
+also updates tem when balance changes*/
   useEffect(() => {
     const getLoggedInUser = () => {
       ctx[1].users.map((user, i) => {
@@ -21,13 +22,19 @@ function Withdraw(){
     getLoggedInUser();
   }, [balance])
 
-  
+  //when successful status set and then reset after 3 seconds
   const updateStatus = (deposit) => {
     setStatus(`Successful withdraw of $${deposit}`)
     setTimeout(() => setStatus(''),3000);
   }
 
-  
+  /*
+  checks deposit is a number
+  checks deposit is positive
+  checks for sufficient funds
+  maps over users then updates context with new balance
+  then resets form
+  */
   const handleSubmit = () => {
     event.preventDefault();
     if (!isNaN(deposit)) {
@@ -44,16 +51,17 @@ function Withdraw(){
             }
           })
         } else {
-          alert('insufficient funds')
+          alert('Insufficient Funds')
         }
       } else {
         alert('Please enter a positive number')
       }
     } else {
-      alert('please enter a number')
+      alert('Please enter a number')
     }
   }
 
+   //disables button if form is empty
   const Button = () => {
     if(deposit == '') {
       return (
