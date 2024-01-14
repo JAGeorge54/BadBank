@@ -36,12 +36,16 @@ function CreateAccount(){
   }
 
   const Button = () => {
+    if ((name && email && password) == '') {
+      return <button disabled='disable' type="submit" className="btn btn-light" onClick={handleCreate}>Create Account</button>
+    } else {
       return <button type="submit" className="btn btn-light" onClick={handleCreate}>Create Account</button>
+    }
   }
 
   return (
     <Card
-      bgcolor="primary"
+      bgcolor="dark"
       header="Create Account"
       status={status}
       body={show ? (  

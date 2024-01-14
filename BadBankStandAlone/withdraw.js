@@ -57,10 +57,10 @@ function Withdraw(){
   const Button = () => {
     if(deposit == '') {
       return (
-        <button disabled='disable' type='submit' onClick={handleSubmit}>submit</button>
+        <button className="btn btn-light" disabled='disable' type='submit' onClick={handleSubmit}>submit</button>
       )
     } else {
-      return <button type='submit' onClick={handleSubmit}>submit</button>
+      return <button className="btn btn-light" type='submit' onClick={handleSubmit}>submit</button>
     }
   }
 
@@ -68,7 +68,7 @@ function Withdraw(){
     <>
     <h1>Logged in User: {loggedInUser}</h1>
     <Card
-      bgcolor="primary"
+      bgcolor="dark"
       header={`Balance : ${currentBalance}`}
       status={status}
       body={

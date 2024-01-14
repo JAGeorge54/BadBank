@@ -7,6 +7,7 @@ function Login(){
   const [display, setDisplay] = React.useState(true);
   const users = ctx[1].users
 
+
 const validateUser = (user) => {
   if (user.name == name && user.password == password) {
     return true
@@ -35,20 +36,20 @@ const logInUser = () => {
 
   return (
     <Card
-      bgcolor="primary"
+      bgcolor="dark"
       header={loggedInUser ? 'USER : ' + ctx[0].loggedIn : 'Login'}
       status={status}
       body={!loggedInUser ? (
         <>
-          <form onSubmit={logInUser}>
+          <form >
             <label>Name</label>
             <br />
-            <input placeholder='enter your name' onChange={e => setName(e.target.value)}></input>
+            <input placeholder='Enter Name' onChange={e => setName(e.target.value)}></input>
             <label>Password</label>
-            <input placeholder='enter your password' onChange={e => setPassword(e.target.value)}></input>
+            <input placeholder='Enter Password' onChange={e => setPassword(e.target.value)}></input>
             <br />
             <br />
-            <input type='submit'></input>
+            <button onClick={logInUser} type="submit" className="btn btn-light">Create Account</button>
           </form>
         </>
       ) : (
